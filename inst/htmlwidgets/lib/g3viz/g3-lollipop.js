@@ -21,7 +21,8 @@ function getUniqueID(left, right) {
 
 var palettes = {
     bottlerocket1: ["#A42820", "#5F5647", "#9B110E", "#3F5151", "#4E2A1E",
-        "#550307", "#0C1707"],
+        "#550307", "#0C1707"
+    ],
     bottlerocket2: ["#FAD510", "#CB2314", "#273046", "#354823", "#1E1E1E"],
     rushmore1: ["#E1BD6D", "#F2300F", "#35274A", "#EABE94", "#0B775E"],
     royal1: ["#899DA4", "#C93312", "#FAEFD1", "#DC863B"],
@@ -40,38 +41,53 @@ var palettes = {
     google16: ["#3366cc", "#dc3912", "#ff9900", "#109618", "#990099",
         "#0099c6", "#dd4477", "#66aa00", "#b82e2e", "#316395",
         "#994499", "#22aa99", "#aaaa11", "#6633cc", "#e67300",
-        "#8b0707", "#651067", "#329262", "#5574a6", "#3b3eac"],
+        "#8b0707", "#651067", "#329262", "#5574a6", "#3b3eac"
+    ],
     google5: ["#008744", "#0057e7", "#d62d20", "#ffa700", "#ffffff"],
     material1: ["#263238", "#212121", "#3e2723", "#dd2c00", "#ff6d00",
         "#ffab00", "#ffd600", "#aeea00", "#64dd17", "#00c853",
         "#00bfa5", "#00b8d4", "#0091ea", "#2962ff", "#304ffe",
-        "#6200ea", "#aa00ff", "#c51162", "#d50000"],
+        "#6200ea", "#aa00ff", "#c51162", "#d50000"
+    ],
     pie1: ["#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99"],
     pie2: ["#e41a1c", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00"],
     pie3: ["#495769", "#A0C2BB", "#F4A775", "#F4C667", "#F37361"],
     pie4: ["#FA7921", "#E55934", "#9BC53D", "#FDE74C", "#5BC0EB"],
     pie5: ["#5DA5DA", "#4D4D4D", "#60BD68", "#B2912F", "#B276B2",
-        "#F15854", "#FAA43A"],
+        "#F15854", "#FAA43A"
+    ],
     pie6: ["#537ea2", "#42a593", "#9f1a1a", "#7c5f95", "#61a070"],
     pie7: ["#bddff9", "#1e72bf", "#ead1ab", "#a2dbc5", "#c7ae7d"],
     breakfast: ["#b6411a", "#eec3d8", "#4182dd", "#ecf0c8", "#2d6328"],
     set1: ["#e41a1c", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00",
-        "#ffff33", "#a65628", "#f781bf", "#999999"],
+        "#ffff33", "#a65628", "#f781bf", "#999999"
+    ],
     set2: ["#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3", "#a6d854",
-        "#ffd92f", "#e5c494", "#b3b3b3"],
+        "#ffd92f", "#e5c494", "#b3b3b3"
+    ],
     set3: ["#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3",
         "#fdb462", "#b3de69", "#fccde5", "#d9d9d9", "#bc80bd",
-        "#ccebc5", "#ffed6f"],
+        "#ccebc5", "#ffed6f"
+    ],
     category10: ["#1f77b4", "#2ca02c", "#d62728", "#ff7f0e", "#9467bd",
-        "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"],
+        "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"
+    ],
     pastel1: ["#fbb4ae", "#b3cde3", "#ccebc5", "#decbe4", "#fed9a6",
-        "#ffffcc", "#e5d8bd", "#fddaec", "#f2f2f2"],
+        "#ffffcc", "#e5d8bd", "#fddaec", "#f2f2f2"
+    ],
     pastel2: ["#b3e2cd", "#fdcdac", "#cbd5e8", "#f4cae4", "#e6f5c9",
-        "#fff2ae", "#f1e2cc", "#cccccc"],
+        "#fff2ae", "#f1e2cc", "#cccccc"
+    ],
     accent: ["#7fc97f", "#beaed4", "#fdc086", "#ffff99", "#bf5b17",
-        "#386cb0", "#f0027f", "#666666"],
+        "#386cb0", "#f0027f", "#666666"
+    ],
     dark2: ["#1b9e77", "#d95f02", "#7570b3", "#e7298a", "#66a61e",
-        "#e6ab02", "#a6761d", "#666666"],
+        "#e6ab02", "#a6761d", "#666666"
+    ],
+    rainbow: ["#e6261f", "#eb7532", "#f7d038", "#a3e048", "#49da9a", "#34bbe6", "#4355db", "#d23be7"],
+    chineseWaterColor: [
+        "#832f0e", "#0c0a08", "#594a40", "#8e7967", "#e3c2a0", "#deaa6e", "#81947a"
+    ]
 };
 
 function defaultPalette() {
@@ -86,194 +102,34 @@ function listPalettes() {
     return Object.keys(palettes);
 }
 
-function scaleOrdinal(paletteName){
-	return d3.scaleOrdinal(getPalette(paletteName));
+function scaleOrdinal(paletteName) {
+    return d3.scaleOrdinal(getPalette(paletteName));
 }
-
-/* FileSaver.js
- * A saveAs() FileSaver implementation.
- * 1.3.8
- * 2018-03-22 14:03:47
- *
- * By Eli Grey, https://eligrey.com
- * License: MIT
- *   See https://github.com/eligrey/FileSaver.js/blob/master/LICENSE.md
- */
-
-/*global self */
-/*jslint bitwise: true, indent: 4, laxbreak: true, laxcomma: true, smarttabs: true, plusplus: true */
-
-/*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/src/FileSaver.js */
-
-var saveAs = saveAs || (function(view) {
-	if (typeof view === "undefined" || typeof navigator !== "undefined" && /MSIE [1-9]\./.test(navigator.userAgent)) {
-		return;
-	}
-	var
-		  doc = view.document
-		  // only get URL when necessary in case Blob.js hasn't overridden it yet
-		, get_URL = function() {
-			return view.URL || view.webkitURL || view;
-		}
-		, save_link = doc.createElementNS("http://www.w3.org/1999/xhtml", "a")
-		, can_use_save_link = "download" in save_link
-		, click = function(node) {
-			var event = new MouseEvent("click");
-			node.dispatchEvent(event);
-		}
-		, is_safari = /constructor/i.test(view.HTMLElement) || view.safari
-		, is_chrome_ios =/CriOS\/[\d]+/.test(navigator.userAgent)
-		, setImmediate = view.setImmediate || view.setTimeout
-		, throw_outside = function(ex) {
-			setImmediate(function() {
-				throw ex;
-			}, 0);
-		}
-		, force_saveable_type = "application/octet-stream"
-		// the Blob API is fundamentally broken as there is no "downloadfinished" event to subscribe to
-		, arbitrary_revoke_timeout = 1000 * 40 // in ms
-		, revoke = function(file) {
-			var revoker = function() {
-				if (typeof file === "string") { // file is an object URL
-					get_URL().revokeObjectURL(file);
-				} else { // file is a File
-					file.remove();
-				}
-			};
-			setTimeout(revoker, arbitrary_revoke_timeout);
-		}
-		, dispatch = function(filesaver, event_types, event) {
-			event_types = [].concat(event_types);
-			var i = event_types.length;
-			while (i--) {
-				var listener = filesaver["on" + event_types[i]];
-				if (typeof listener === "function") {
-					try {
-						listener.call(filesaver, event || filesaver);
-					} catch (ex) {
-						throw_outside(ex);
-					}
-				}
-			}
-		}
-		, auto_bom = function(blob) {
-			// prepend BOM for UTF-8 XML and text/* types (including HTML)
-			// note: your browser will automatically convert UTF-16 U+FEFF to EF BB BF
-			if (/^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(blob.type)) {
-				return new Blob([String.fromCharCode(0xFEFF), blob], {type: blob.type});
-			}
-			return blob;
-		}
-		, FileSaver = function(blob, name, no_auto_bom) {
-			if (!no_auto_bom) {
-				blob = auto_bom(blob);
-			}
-			// First try a.download, then web filesystem, then object URLs
-			var
-				  filesaver = this
-				, type = blob.type
-				, force = type === force_saveable_type
-				, object_url
-				, dispatch_all = function() {
-					dispatch(filesaver, "writestart progress write writeend".split(" "));
-				}
-				// on any filesys errors revert to saving with object URLs
-				, fs_error = function() {
-					if ((is_chrome_ios || (force && is_safari)) && view.FileReader) {
-						// Safari doesn't allow downloading of blob urls
-						var reader = new FileReader();
-						reader.onloadend = function() {
-							var url = is_chrome_ios ? reader.result : reader.result.replace(/^data:[^;]*;/, 'data:attachment/file;');
-							var popup = view.open(url, '_blank');
-							if(!popup) view.location.href = url;
-							url=undefined; // release reference before dispatching
-							filesaver.readyState = filesaver.DONE;
-							dispatch_all();
-						};
-						reader.readAsDataURL(blob);
-						filesaver.readyState = filesaver.INIT;
-						return;
-					}
-					// don't create more object URLs than needed
-					if (!object_url) {
-						object_url = get_URL().createObjectURL(blob);
-					}
-					if (force) {
-						view.location.href = object_url;
-					} else {
-						var opened = view.open(object_url, "_blank");
-						if (!opened) {
-							// Apple does not allow window.open, see https://developer.apple.com/library/safari/documentation/Tools/Conceptual/SafariExtensionGuide/WorkingwithWindowsandTabs/WorkingwithWindowsandTabs.html
-							view.location.href = object_url;
-						}
-					}
-					filesaver.readyState = filesaver.DONE;
-					dispatch_all();
-					revoke(object_url);
-				};
-			filesaver.readyState = filesaver.INIT;
-
-			if (can_use_save_link) {
-				object_url = get_URL().createObjectURL(blob);
-				setImmediate(function() {
-					save_link.href = object_url;
-					save_link.download = name;
-					click(save_link);
-					dispatch_all();
-					revoke(object_url);
-					filesaver.readyState = filesaver.DONE;
-				}, 0);
-				return;
-			}
-
-			fs_error();
-		}
-		, FS_proto = FileSaver.prototype
-		, saveAs = function(blob, name, no_auto_bom) {
-			return new FileSaver(blob, name || blob.name || "download", no_auto_bom);
-		};
-
-	// IE 10+ (native saveAs)
-	if (typeof navigator !== "undefined" && navigator.msSaveOrOpenBlob) {
-		return function(blob, name, no_auto_bom) {
-			name = name || blob.name || "download";
-
-			if (!no_auto_bom) {
-				blob = auto_bom(blob);
-			}
-			return navigator.msSaveOrOpenBlob(blob, name);
-		};
-	}
-
-	// todo: detect chrome extensions & packaged apps
-	//save_link.target = "_blank";
-
-	FS_proto.abort = function(){};
-	FS_proto.readyState = FS_proto.INIT = 0;
-	FS_proto.WRITING = 1;
-	FS_proto.DONE = 2;
-
-	FS_proto.error =
-	FS_proto.onwritestart =
-	FS_proto.onprogress =
-	FS_proto.onwrite =
-	FS_proto.onabort =
-	FS_proto.onerror =
-	FS_proto.onwriteend =
-		null;
-
-	return saveAs;
-}(
-	   typeof self !== "undefined" && self
-	|| typeof window !== "undefined" && window
-	|| undefined
-));
 
 // ==========================================
 // g3.utils.output module 
 // ==========================================
+//import { saveAs } from 'file-saver';
+
 function output () {
+    var defaultFilename = "output";
+    
+    var output = function(){};
+    /*
+    function output(nodeId) {
+        svgNode = nodeId || svgNode;
+    }
+    */
+
     // helper functions
+    function _getSVGByID(nodeId) {
+        if (nodeId == "svg") {
+            return document.querySelector('svg');
+        } else {
+            return document.getElementsByTagName('svg')[nodeId];
+        }
+    }
+
     function _parseFilename(filename, fileExt) {
         filename = filename || defaultFilename;
         return filename + "." + fileExt;
@@ -352,27 +208,27 @@ function output () {
         }
     }
 
-    var defaultFilename = "output";
-    var svgNode = "svg";
+    output.toSVG = function (filename, nodeId) {
+        nodeId = nodeId || "svg";
+        var svg = _getSVGByID(nodeId);
 
-    function output(nodeId) {
-        svgNode = nodeId || svgNode;
-    }
-
-    output.toSVG = function (filename) {
         filename = _parseFilename(filename, "svg");
 
-        var svg_string = _getSVGString(document.querySelector(svgNode));
-        var blod = new Blob([svg_string], { type: "image/svg+xml" });
+        var svg_string = _getSVGString(svg);
+        var blod = new Blob([svg_string], {
+            type: "image/svg+xml"
+        });
 
         saveAs(blod, filename);
     };
 
-    output.toPNG = function (filename) {
+    output.toPNG = function (filename, nodeId) {
+        nodeId = nodeId || "svg";
+        var svg = _getSVGByID(nodeId);
+
         filename = _parseFilename(filename, "png");
 
-        var svg = document.querySelector(svgNode),
-            width = +svg.getAttribute("width"),
+        var width = +svg.getAttribute("width"),
             height = +svg.getAttribute("height"),
             svg_string = _getSVGString(svg);
 
@@ -396,7 +252,191 @@ function output () {
         };
     };
 
-    return output;
+    /* FileSaver.js
+     * A saveAs() FileSaver implementation.
+     * 1.3.8
+     * 2018-03-22 14:03:47
+     *
+     * By Eli Grey, https://eligrey.com
+     * License: MIT
+     *   See https://github.com/eligrey/FileSaver.js/blob/master/LICENSE.md
+     */
+
+    /*global self */
+    /*jslint bitwise: true, indent: 4, laxbreak: true, laxcomma: true, smarttabs: true, plusplus: true */
+
+    /*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/src/FileSaver.js */
+
+    var saveAs = saveAs || (function (view) {
+        if (typeof view === "undefined" || typeof navigator !== "undefined" && /MSIE [1-9]\./.test(navigator.userAgent)) {
+            return;
+        }
+        var
+            doc = view.document
+            // only get URL when necessary in case Blob.js hasn't overridden it yet
+            ,
+            get_URL = function () {
+                return view.URL || view.webkitURL || view;
+            },
+            save_link = doc.createElementNS("http://www.w3.org/1999/xhtml", "a"),
+            can_use_save_link = "download" in save_link,
+            click = function (node) {
+                var event = new MouseEvent("click");
+                node.dispatchEvent(event);
+            },
+            is_safari = /constructor/i.test(view.HTMLElement) || view.safari,
+            is_chrome_ios = /CriOS\/[\d]+/.test(navigator.userAgent),
+            setImmediate = view.setImmediate || view.setTimeout,
+            throw_outside = function (ex) {
+                setImmediate(function () {
+                    throw ex;
+                }, 0);
+            },
+            force_saveable_type = "application/octet-stream"
+            // the Blob API is fundamentally broken as there is no "downloadfinished" event to subscribe to
+            ,
+            arbitrary_revoke_timeout = 1000 * 40 // in ms
+            ,
+            revoke = function (file) {
+                var revoker = function () {
+                    if (typeof file === "string") { // file is an object URL
+                        get_URL().revokeObjectURL(file);
+                    } else { // file is a File
+                        file.remove();
+                    }
+                };
+                setTimeout(revoker, arbitrary_revoke_timeout);
+            },
+            dispatch = function (filesaver, event_types, event) {
+                event_types = [].concat(event_types);
+                var i = event_types.length;
+                while (i--) {
+                    var listener = filesaver["on" + event_types[i]];
+                    if (typeof listener === "function") {
+                        try {
+                            listener.call(filesaver, event || filesaver);
+                        } catch (ex) {
+                            throw_outside(ex);
+                        }
+                    }
+                }
+            },
+            auto_bom = function (blob) {
+                // prepend BOM for UTF-8 XML and text/* types (including HTML)
+                // note: your browser will automatically convert UTF-16 U+FEFF to EF BB BF
+                if (/^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(blob.type)) {
+                    return new Blob([String.fromCharCode(0xFEFF), blob], {
+                        type: blob.type
+                    });
+                }
+                return blob;
+            },
+            FileSaver = function (blob, name, no_auto_bom) {
+                if (!no_auto_bom) {
+                    blob = auto_bom(blob);
+                }
+                // First try a.download, then web filesystem, then object URLs
+                var
+                    filesaver = this,
+                    type = blob.type,
+                    force = type === force_saveable_type,
+                    object_url, dispatch_all = function () {
+                        dispatch(filesaver, "writestart progress write writeend".split(" "));
+                    }
+                    // on any filesys errors revert to saving with object URLs
+                    ,
+                    fs_error = function () {
+                        if ((is_chrome_ios || (force && is_safari)) && view.FileReader) {
+                            // Safari doesn't allow downloading of blob urls
+                            var reader = new FileReader();
+                            reader.onloadend = function () {
+                                var url = is_chrome_ios ? reader.result : reader.result.replace(/^data:[^;]*;/, 'data:attachment/file;');
+                                var popup = view.open(url, '_blank');
+                                if (!popup) view.location.href = url;
+                                url = undefined; // release reference before dispatching
+                                filesaver.readyState = filesaver.DONE;
+                                dispatch_all();
+                            };
+                            reader.readAsDataURL(blob);
+                            filesaver.readyState = filesaver.INIT;
+                            return;
+                        }
+                        // don't create more object URLs than needed
+                        if (!object_url) {
+                            object_url = get_URL().createObjectURL(blob);
+                        }
+                        if (force) {
+                            view.location.href = object_url;
+                        } else {
+                            var opened = view.open(object_url, "_blank");
+                            if (!opened) {
+                                // Apple does not allow window.open, see https://developer.apple.com/library/safari/documentation/Tools/Conceptual/SafariExtensionGuide/WorkingwithWindowsandTabs/WorkingwithWindowsandTabs.html
+                                view.location.href = object_url;
+                            }
+                        }
+                        filesaver.readyState = filesaver.DONE;
+                        dispatch_all();
+                        revoke(object_url);
+                    };
+                filesaver.readyState = filesaver.INIT;
+
+                if (can_use_save_link) {
+                    object_url = get_URL().createObjectURL(blob);
+                    setImmediate(function () {
+                        save_link.href = object_url;
+                        save_link.download = name;
+                        click(save_link);
+                        dispatch_all();
+                        revoke(object_url);
+                        filesaver.readyState = filesaver.DONE;
+                    }, 0);
+                    return;
+                }
+
+                fs_error();
+            },
+            FS_proto = FileSaver.prototype,
+            saveAs = function (blob, name, no_auto_bom) {
+                return new FileSaver(blob, name || blob.name || "download", no_auto_bom);
+            };
+
+        // IE 10+ (native saveAs)
+        if (typeof navigator !== "undefined" && navigator.msSaveOrOpenBlob) {
+            return function (blob, name, no_auto_bom) {
+                name = name || blob.name || "download";
+
+                if (!no_auto_bom) {
+                    blob = auto_bom(blob);
+                }
+                return navigator.msSaveOrOpenBlob(blob, name);
+            };
+        }
+
+        // todo: detect chrome extensions & packaged apps
+        //save_link.target = "_blank";
+
+        FS_proto.abort = function () {};
+        FS_proto.readyState = FS_proto.INIT = 0;
+        FS_proto.WRITING = 1;
+        FS_proto.DONE = 2;
+
+        FS_proto.error =
+            FS_proto.onwritestart =
+            FS_proto.onprogress =
+            FS_proto.onwrite =
+            FS_proto.onabort =
+            FS_proto.onerror =
+            FS_proto.onwriteend =
+            null;
+
+        return saveAs;
+    }(
+        typeof self !== "undefined" && self ||
+        typeof window !== "undefined" && window ||
+        undefined
+    ));
+
+    return output
 }
 
 function legend (target, title, series) {
@@ -964,6 +1004,7 @@ function Lollipop(target, chartType, width) {
         margin: { left: 40, right: 20, top: 15, bottom: 25 },
         background: "transparent",
         transitionTime: 600,
+        highlightTextAngle: 90,
         legend: true,
         legendOpt: {
             margin: {},
@@ -978,7 +1019,7 @@ function Lollipop(target, chartType, width) {
         defsId: Prefix + "-main-defs-" + uniqueID,
         xAxisDefsId: Prefix + "-xAxis-defs-" + uniqueID,
         height: LollipopTrackHeightDefault,
-        background: "rgb(244,244,244)",
+        background: "rgb(233,233,233)",
         lollipopClassName: {
             group: "lollipop",
             line: "lollipopLine",
@@ -1041,7 +1082,10 @@ function Lollipop(target, chartType, width) {
             alignment: "middle",
         },
         ylab: {
-            text: "mutations",
+            text: "# of mutations",
+            lineColor: "#c4c8ca",
+            lineWidth: 1,
+            lineStyle: "dash",
         },
     };
 
@@ -1072,7 +1116,14 @@ function Lollipop(target, chartType, width) {
             background: "#e5e3e1",
             margin: { top: 2, bottom: 2 }
         },
-        brush: true,
+        brush: {
+            enabled: true,
+            fill: "#666",
+            opacity: 0.2,
+            stroke: "#969696",
+            strokeWidth: 1,
+            handler: "#666"
+        },
         zoom: true,
     };
 
@@ -1130,7 +1181,7 @@ function Lollipop(target, chartType, width) {
 
     var _updateX = function () {
         _xScale.domain(_xRange);
-        _domXAxis.call(_xAxis);
+        _domXAxis.call(_xReAxis);
 
         // update domains
         _domainRect
@@ -1217,10 +1268,25 @@ function Lollipop(target, chartType, width) {
                 .on("zoom", _mainVizZoomed);
         }
 
-        if (domainOpt.brush) {
-            _domainViz.append("g")
+        if (domainOpt.brush.enabled) {
+            var _brush = _domainViz.append("g")
                 .attr("class", domainOpt.className.brush)
+                /*
+                .attr("fill", domainOpt.brush.fill)
+                .attr("fill-opacity", domainOpt.brush.opacity)
+                .attr("stroke", domainOpt.brush.stroke)
+                .attr("stroke-width", domainOpt.brush.strokeWidth)
+                */
                 .call(_domainBrush);
+
+            _brush.selectAll("rect.selection")
+                .attr("fill", domainOpt.brush.fill)
+                .attr("fill-opacity", domainOpt.brush.opacity)
+                .attr("stroke", domainOpt.brush.stroke)
+                .attr("stroke-width", domainOpt.brush.strokeWidth);
+
+            _brush.selectAll("rect.handle")
+                .attr("fill", domainOpt.brush.handler);
         }
         if (domainOpt.zoom) {
             _mainViz.append("rect")
@@ -1374,6 +1440,7 @@ function Lollipop(target, chartType, width) {
             let _font = lollipopOpt.popLabel["font-weight"] + " " + _fontSize + " " + lollipopOpt.popLabel["font-family"];
             // text length in dimention
             let _txtLen = getTextWidth(_dominant.entry, _font);
+            _txtLen = Math.max(0, _txtLen * Math.sin(options.highlightTextAngle / 180 * Math.PI));
 
             // note: y axis 0 is at top-left cornor
             let _txtH = d._currentState.radius + lollipopOpt.popLabel.padding + _txtLen;
@@ -1395,7 +1462,7 @@ function Lollipop(target, chartType, width) {
                 .attr("text-anchor", "end");
 
             // text rotation
-            txtHolder.transition().duration(options.transitionTime).attr("transform", "rotate(90)");
+            txtHolder.transition().duration(options.transitionTime).attr("transform", "rotate("+options.highlightTextAngle+")");
         }
     };
 
@@ -1785,7 +1852,8 @@ function Lollipop(target, chartType, width) {
     };
 
     var _getYMaxAfterNice = function (yMax) {
-        return d3.scaleLinear().domain([0, yMax]).range([_mainH, 0]).nice().domain()[1];
+//        return d3.scaleLinear().domain([0, yMax]).range([_mainH, 0]).nice().domain()[1];
+        return d3.scaleLinear().domain([0, yMax]).nice().domain()[1];
     };
 
     var _calcYRange = function () {
@@ -1796,14 +1864,20 @@ function Lollipop(target, chartType, width) {
         }
         // get yRange
         _yRange[0] = Math.min(0, _yRange[0]);
-        _yValueMax = _yRange[1] = _getYMaxAfterNice(_yRange[1] * lollipopOpt.yPaddingRatio);
+        // add lollipopOpt.popParams.rMax
+
+//        lollipopOpt.popParams.rMax / _mainH
+//        _yValueMax = _yRange[1] = _getYMaxAfterNice(_yRange[1] * lollipopOpt.yPaddingRatio);
+        _yValueMax = _yRange[1] = _getYMaxAfterNice(
+            _yRange[1] * (lollipopOpt.yPaddingRatio + lollipopOpt.popParams.rMax / _mainH)
+        );
     };
 
     var _calcAxis = function () {
         // y
         _calcYRange();
         _yScale = d3.scaleLinear().domain(_yRange).range([_mainH, 0]);
-        _yAxis = d3.axisLeft(_yScale).tickSize(-_mainW).ticks(9);
+        _yAxis = d3.axisLeft(_yScale).tickSize(-_mainW).ticks(9).tickFormat(d3.format("d"));
 
         // x
         _xRange = [0, domainData[domainDataFormat.length]];
@@ -1856,12 +1930,28 @@ function Lollipop(target, chartType, width) {
         });
     };
 
+    var _xReAxis = function (g) {
+        var s = g.selection ? g.selection() : g;
+        g.call(_xAxis);
+
+        s.select(".domain").remove();
+        s.selectAll(".tick line")
+            .attr("stroke", "#c4c8ca")
+            .attr("stroke-width", 1);
+    };
+
     var _yReAxis = function (g) {
         var s = g.selection ? g.selection() : g;
         g.call(_yAxis);
 
         s.select(".domain").remove();
-        s.selectAll(".tick line").filter(Number).attr("stroke", "#aaa").attr("stroke-dasharray", "2,2");
+        let __tickLine = s.selectAll(".tick line")//.filter(Number)
+            .attr("stroke", lollipopOpt.ylab.lineColor)
+            .attr("stroke-width", lollipopOpt.ylab.lineWidth);
+        if(lollipopOpt.ylab.lineStyle == "dash"){
+            __tickLine.attr("stroke-dasharray", "3,3");
+        }
+
         s.selectAll(".tick text").attr("x", -2).attr("dy", 2);
         if (s !== g) g.selectAll(".tick text").attrTween("x", null).attrTween("dy", null);
     };
@@ -1897,7 +1987,7 @@ function Lollipop(target, chartType, width) {
             .attr("clip-path", "url(#" + lollipopOpt.xAxisDefsId + ")")
             .attr("class", "axis axis--x")
             .attr("transform", "translate(0, " + (_mainH + domainOpt.height) + ")")
-            .call(_xAxis);
+            .call(_xReAxis);
     };
 
     var _addBackground = function (g, bgColor, height, width) {
@@ -2014,15 +2104,23 @@ function Lollipop(target, chartType, width) {
         // chart margin (top / bottom / left / right)
         set chartMargin(_) { options.margin = _; }, get chartMargin() { return options.margin; },
         // chart background
-        set chartBackground(_) { options.background = _; }, get charBackground() { return options.background; },
+        set chartBackground(_) { options.background = _; }, get chartBackground() { return options.background; },
 
         // chart animation transition time (ms)
         set transitionTime(_) { options.transitionTime = _; }, get transitionTime() { return options.transitionTime; },
 
+        // highlight text angle
+        set highlightTextAngle(_) { options.highlightTextAngle = _; }, get highlightTextAngle() { return options.highlightTextAngle; },
+
+        // if enable tooltip
         set tooltip(_) { options.tooltip = _; }, get tooltip() { return options.tooltip; },
 
         // ylabel text
         set yAxisLabel(_) { lollipopOpt.ylab.text = _; }, get yAxisLabel() { return lollipopOpt.ylab.text; },
+        // y-axis line color
+        set yAxisLineColor(_) { lollipopOpt.ylab.lineColor = _; }, get yAxisLineColor() { return lollipopOpt.ylab.lineColor; },
+        set yAxisLineWidth(_) { lollipopOpt.ylab.lineWidth = _; }, get yAxisLineWidth() { return lollipopOpt.ylab.lineWidth; },
+        set yAxisLineStyle(_) { lollipopOpt.ylab.lineStyle = _; }, get yAxisLineStyle() { return lollipopOpt.ylab.lineStyle; },
 
         // axis settings (label font / color / alignment / y-adjustment)
         set axisLabelFont(_) { lollipopOpt.axisLabel.font = _; }, get axisLabelFont() { return lollipopOpt.axisLabel.font; },
@@ -2047,9 +2145,11 @@ function Lollipop(target, chartType, width) {
         // pop circle size (min / max)
         set lollipopPopMinSize(_) { lollipopOpt.popParams.rMin = _; }, get lollipopPopMinSize() { return lollipopOpt.popParams.rMin; },
         set lollipopPopMaxSize(_) { lollipopOpt.popParams.rMax = _; }, get lollipopPopMaxSize() { return lollipopOpt.popParams.rMax; },
+
         // pop cicle text (radius cutoff to show info, info text color)
         set lollipopPopInfoLimit(_) { lollipopOpt.popParams.addNumRCutoff = _; }, get lollipopPopInfoLimit() { return lollipopOpt.popParams.addNumRCutoff; },
         set lollipopPopInfoColor(_) { lollipopOpt.popText.fill = _; }, get lollipopPopInfoColor() { return lollipopOpt.popText.fill; },
+        set lollipopPopInfoDy(_) { lollipopOpt.popText.dy = _; }, get lollipopPopInfoDy() { return lollipopOpt.popText.dy; },
 
         // lollipop line (color / width)
         set lollipopLineColor(_) { lollipopOpt.lollipopLine.stroke = _; }, get lollipopLineColor() { return lollipopOpt.lollipopLine.stroke; },
@@ -2091,7 +2191,13 @@ function Lollipop(target, chartType, width) {
         set domainTextFont(_) { domainOpt.domain.label.font = _; }, get domainTextFont() { return domainOpt.domain.label.font; },
         set domainTextColor(_) { domainOpt.domain.label.color = _; }, get domainTextColor() { return domainOpt.domain.label.color; },
 
-        set brush(_) { domainOpt.brush = _; }, get brush() { return domainOpt.brush; },
+        set brush(_) { domainOpt.brush.enabled = _; }, get brush() { return domainOpt.brush.enabled; },
+        set brushBackground(_) { domainOpt.brush.fill = _; }, get brushBackground() { return domainOpt.brush.fill; },
+        set brushOpacity(_) { domainOpt.brush.opacity = _; }, get brushOpacity() { return domainOpt.brush.opacity; },
+        set brushBorderColor(_) { domainOpt.brush.stroke = _; }, get brushBorderColor() { return domainOpt.brush.stroke; },
+        set brushBorderWidth(_) { domainOpt.brush.strokeWdith = _; }, get brushBorderWidth() { return domainOpt.brush.strokeWidth; },
+        set brushHandler(_) { domainOpt.brush.handler = _; }, get brushHandler() { return domainOpt.brush.handler; }, 
+
         set zoom(_) { domainOpt.zoom = _; }, get zoom() { return domainOpt.zoom; },
     };
 

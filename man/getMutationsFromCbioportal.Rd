@@ -5,49 +5,65 @@
 \title{Query cancer genomic mutation data from cBioPortal}
 \usage{
 getMutationsFromCbioportal(study.id, gene.symbol, output.file = NA,
-  mutation.type.to.class.df = NA)
+  mutation.type.to.class.df = NA,
+  cgds.url = "http://www.cbioportal.org/", test.cgds = FALSE)
 }
 \arguments{
 \item{study.id}{cbioprotal study ID}
 
 \item{gene.symbol}{HGNC gene symbol.}
 
-\item{output.file}{if specified, output to a file in \emph{CSV} format. Default is \code{NA}.}
+\item{output.file}{if specified, output to a file in \emph{CSV} format.
+Default is \code{NA}.}
 
 \item{mutation.type.to.class.df}{mapping table from mutation type to class.
-See \code{\link{mapMutationTypeToMutationClass}} for details.
-Default \code{NA}, which indicates to use default mappings.}
+See \code{\link{mapMutationTypeToMutationClass}} for details. Default
+\code{NA}, which indicates to use default mappings.}
+
+\item{cgds.url}{the URL for the public CGDS server (Cancer Genomic Data
+Server). Default is \url{http://www.cbioportal.org/}. Check
+\emph{cgdsr} R-package for details.}
+
+\item{test.cgds}{if test CGDS connection.  Default is \code{FALSE}}
 }
 \value{
 a data frame with columns
-\describe{
-\item{Hugo_Symbol}{Hugo gene symbol}
-\item{Protein_Change}{Protein change information (cBioprotal uses \emph{HGVSp} format)}
-\item{Sample_ID}{Sample ID}
-\item{Mutation_Type}{mutation type, aka, variant classification.}
-\item{Chromosome}{chromosome}
-\item{Start_Position}{start position}
-\item{End_Position}{end position}
-\item{Reference_Allele}{reference allele}
-\item{Variant_Allele}{variant allele}
-\item{Mutation_Class}{mutation class (e.g., Truncating/Missense/Inframe/Other)}
-\item{AA_Position}{amino-acid position of the variant; if the variant is not in protein-coding region, \code{NA}}
-}
+  \describe{
+      \item{Hugo_Symbol}{Hugo gene symbol}
+      \item{Protein_Change}{Protein change information (cBioprotal uses \emph{HGVSp} format)}
+      \item{Sample_ID}{Sample ID}
+      \item{Mutation_Type}{mutation type, aka, variant classification.}
+      \item{Chromosome}{chromosome}
+      \item{Start_Position}{start position}
+      \item{End_Position}{end position}
+      \item{Reference_Allele}{reference allele}
+      \item{Variant_Allele}{variant allele}
+      \item{Mutation_Class}{mutation class (e.g., Truncating/Missense/Inframe/Other)}
+      \item{AA_Position}{amino-acid position of the variant; if the variant is not in
+      protein-coding region, \code{NA}}
+      }
 }
 \description{
-Retrieve and parse mutation data from cBioPortal
-by the given cBioPortal cancer study ID and the gene symbol.
+Retrieve and parse mutation data from cBioPortal by the given
+  cBioPortal cancer study ID and the gene symbol.
 }
 \examples{
 \dontrun{
-# Note: internet access required.  May need more than 10 seconds.
-# list all studies of cBioPortal
+# Usage:
+# Connection to CGDS (Cange Genomic Data Server). Internet access required.
+# Note: this may need more than 10 seconds, and sometimes it may fail.
 library(cgdsr)
-cgds <- CGDS("http://www.cbioportal.org/public-portal/")
+cgds <- CGDS("http://www.cbioportal.org/")
+
+# test if connection is OK (warning: sometimes it may fail)
+test(cgds)
+
+# list all studies of cBioPortal
 all.studies <- getCancerStudies(cgds)
 
-# pick a "caner_study_id" (contain a mutation data set)
-# pick a primary HGNC gene symbol to query
+# First, select a cancer study that contains mutation data set ("caner_study_id")
+# then, query genomic mutation data using a HGNC gene symbol,
+# for example
 mutation.dat <- getMutationsFromCbioportal("msk_impact_2017", "TP53")
 mutation.dat <- getMutationsFromCbioportal("all_stjude_2016", "TP53")
 }
