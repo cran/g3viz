@@ -168,13 +168,13 @@ chart.options.df = read.table("tables/chart_options.tsv", sep="\t", header=TRUE,
 kable(chart.options.df, caption = "Chart options of `g3viz`") %>% 
   kable_styling(bootstrap_options = c("striped", "hover", "bordered", "condensed"), full_width = TRUE) %>%
   pack_rows("Chart settings", 1, 5)  %>%
-  pack_rows("Lollipop track settings", 6, 19) %>%
-  pack_rows("Domain annotation track settings", 20, 28) %>%
-  pack_rows("Y-axis settings", 29, 37) %>%
-  pack_rows("Chart title settings", 38, 42) %>%
-  pack_rows("Chart legend settings", 43, 46) %>%
-  pack_rows("Brush selection tool settings", 47, 52) %>%
-  pack_rows("Tooltip and zoom tools", 53, 54)
+  pack_rows("Lollipop track settings", 6, 20) %>%
+  pack_rows("Domain annotation track settings", 21, 29) %>%
+  pack_rows("Y-axis settings", 30, 38) %>%
+  pack_rows("Chart title settings", 39, 43) %>%
+  pack_rows("Chart legend settings", 44, 47) %>%
+  pack_rows("Brush selection tool settings", 48, 53) %>%
+  pack_rows("Tooltip and zoom tools", 54, 55)
 
 ## ---- include=TRUE-------------------------------------------------------
 sessionInfo()
