@@ -1,7 +1,7 @@
-0eadd9c93973a46012ecb8928a52898e *DESCRIPTION
+568de42c88937b85ba47189ddef5e9a2 *DESCRIPTION
 3178c4522259b5ea513ed87fbc90d9a8 *LICENSE
 aa73ce0e25763b13fb55ec5a3f3d9c53 *NAMESPACE
-fe228761299ee0c7f8ba884e53756e75 *NEWS.md
+2fd5add31c2b845c5780e5c0eb34a561 *NEWS.md
 118c6061441bc375bc50dd1f9ac1ca31 *R/data.R
 c3ec00f88123846ac09ea879a72e7afa *R/g3Lollipop.R
 6bcb023aa3bf616202d63e9026ddf8c7 *R/g3LollipopOptions.R
@@ -21,13 +21,13 @@ e15ac5fa74e6a84874e9134e5709671d *build/vignette.rds
 44b609136822e8b4f8bb466237610df1 *data/mutation.table.df.rda
 2fe2a5a6e6e288f16e988ee5945bf92e *inst/doc/chart_themes.R
 ffed20f6038ab495f6fc0b483f585475 *inst/doc/chart_themes.Rmd
-daec0cbe7404eb2e7ce9e45cc730b43a *inst/doc/chart_themes.html
+e19e68dcf31a5ffc64ea737b32e9d185 *inst/doc/chart_themes.html
 ed0558f84f131ca5011b86b55c9fb62c *inst/doc/introduction.R
 da3e2bf4d697c966c1dd49cf29c0cbd6 *inst/doc/introduction.Rmd
-0190e1589e92bd9e2de23ca54573838d *inst/doc/introduction.html
+f91b835224fb34f64453235df02158b6 *inst/doc/introduction.html
 87d879043f6d229c545f7f450e33e502 *inst/extdata/TCGA.BRCA.varscan.somatic.maf.gz
 e72244187d2d191de3e7db4b2cf1dced *inst/extdata/ccle.csv
-1469945f5dceffaef96b6f6d0db1d1e6 *inst/htmlwidgets/g3Lollipop.js
+44ef02edc796ba83f674ae9e8d481f13 *inst/htmlwidgets/g3Lollipop.js
 50c67b5cb61a3de78f7a29114b555b29 *inst/htmlwidgets/g3Lollipop.yaml
 e4c32f2be79353a70419462e28373dda *inst/htmlwidgets/htmlwidgets.js
 e899651bcf1a3591032d7213daeab171 *inst/htmlwidgets/lib/d3/d3.v4.min.js
