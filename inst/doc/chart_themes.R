@@ -1,21 +1,21 @@
-## ---- message=FALSE, include = FALSE-------------------------------------
+## ---- message=FALSE, include = FALSE------------------------------------------
 # install package
 library(g3viz)
 library(cgdsr)
 library(knitr)
 
-## ----setup, include = FALSE----------------------------------------------
+## ----setup, include = FALSE---------------------------------------------------
 knitr::opts_chunk$set(
 	echo = TRUE,
 	collapse = TRUE,
 	comment = "#>"
 )
 
-## ---- include = TRUE-----------------------------------------------------
+## ---- include = TRUE----------------------------------------------------------
 # read data
 mutation.dat <- readMAF("tables/tp53-msk_impact_2017.tsv", sep="\t")
 
-## ---- include = TRUE-----------------------------------------------------
+## ---- include = TRUE----------------------------------------------------------
 chart.options = g3Lollipop.theme(
       theme.name = "default",
       title.text = "default theme title",
@@ -27,7 +27,7 @@ g3Lollipop(mutation.dat,
            btn.style = "blue",
            gene.symbol = "TP53")
 
-## ---- include = TRUE-----------------------------------------------------
+## ---- include = TRUE----------------------------------------------------------
 g3Lollipop(mutation.dat,
            plot.options =
              g3Lollipop.theme(theme.name = "blue",
@@ -37,7 +37,7 @@ g3Lollipop(mutation.dat,
            btn.style = "blue",
            gene.symbol = "TP53")
 
-## ---- include = TRUE-----------------------------------------------------
+## ---- include = TRUE----------------------------------------------------------
 g3Lollipop(mutation.dat,
            plot.options =
              g3Lollipop.theme(theme.name = "simple",
@@ -47,7 +47,7 @@ g3Lollipop(mutation.dat,
            btn.style = "blue",
            gene.symbol = "TP53")
 
-## ---- include = TRUE-----------------------------------------------------
+## ---- include = TRUE----------------------------------------------------------
 g3Lollipop(mutation.dat,
            plot.options =
              g3Lollipop.theme(theme.name = "cbioportal",
@@ -57,7 +57,7 @@ g3Lollipop(mutation.dat,
            btn.style = "blue",
            gene.symbol = "TP53")
 
-## ---- include = TRUE-----------------------------------------------------
+## ---- include = TRUE----------------------------------------------------------
 g3Lollipop(mutation.dat,
            plot.options =
              g3Lollipop.theme(theme.name = "nature",
@@ -67,7 +67,7 @@ g3Lollipop(mutation.dat,
            btn.style = "blue",
            gene.symbol = "TP53")
 
-## ---- include = TRUE-----------------------------------------------------
+## ---- include = TRUE----------------------------------------------------------
 
 g3Lollipop(mutation.dat,
            plot.options =
@@ -78,7 +78,7 @@ g3Lollipop(mutation.dat,
            btn.style = "blue",
            gene.symbol = "TP53")
 
-## ---- include = TRUE-----------------------------------------------------
+## ---- include = TRUE----------------------------------------------------------
 g3Lollipop(mutation.dat,
            plot.options =
              g3Lollipop.theme(theme.name = "ggplot2",
@@ -88,7 +88,7 @@ g3Lollipop(mutation.dat,
            btn.style = "blue",
            gene.symbol = "TP53")
 
-## ---- include = TRUE-----------------------------------------------------
+## ---- include = TRUE----------------------------------------------------------
 g3Lollipop(mutation.dat,
            plot.options =
              g3Lollipop.theme(theme.name = "dark",

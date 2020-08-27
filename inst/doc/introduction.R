@@ -1,17 +1,21 @@
-## ---- message=FALSE, include = FALSE-------------------------------------
+## ---- message=FALSE, include = FALSE------------------------------------------
 # install package
 library(g3viz)
 library(knitr)
 library(kableExtra)
 
-## ----setup, include = FALSE----------------------------------------------
+## ----setup, include = FALSE---------------------------------------------------
 knitr::opts_chunk$set(
 	echo = TRUE,
 	collapse = TRUE,
 	comment = "#>"
 )
 
-## ----include = TRUE------------------------------------------------------
+## ----include = TRUE, message=FALSE, eval=FALSE--------------------------------
+#  # load g3viz package
+#  library(g3viz)
+
+## ----include = TRUE-----------------------------------------------------------
 # System file
 maf.file <- system.file("extdata", "TCGA.BRCA.varscan.somatic.maf.gz", package = "g3viz")
 
@@ -25,7 +29,7 @@ maf.file <- system.file("extdata", "TCGA.BRCA.varscan.somatic.maf.gz", package =
 # ============================================
 mutation.dat <- readMAF(maf.file)
 
-## ----include = TRUE------------------------------------------------------
+## ----include = TRUE-----------------------------------------------------------
 # ============================================
 # Chart 1
 # "default" chart theme
@@ -38,7 +42,7 @@ g3Lollipop(mutation.dat,
            plot.options = chart.options,
            output.filename = "default_theme")
 
-## ----include=TRUE--------------------------------------------------------
+## ----include=TRUE-------------------------------------------------------------
 # load data
 mutation.csv <- system.file("extdata", "ccle.csv", package = "g3viz")
 
@@ -127,7 +131,7 @@ g3Lollipop(mutation.dat,
            plot.options = plot.options,
            output.filename = "customized_plot")
 
-## ----include=TRUE--------------------------------------------------------
+## ----include=TRUE-------------------------------------------------------------
 # Retrieve mutation data of "msk_impact_2017" from cBioPortal
 mutation.dat <- getMutationsFromCbioportal("msk_impact_2017", "TP53")
 
@@ -142,7 +146,7 @@ g3Lollipop(mutation.dat,
            plot.options = plot.options,
            output.filename = "cbioportal_theme")
 
-## ---- include=TRUE, echo=FALSE-------------------------------------------
+## ---- include=TRUE, echo=FALSE------------------------------------------------
 mutation.mapping.df = read.table("tables/mutation_mapping.tsv", sep="\t", header=TRUE, quote="")
 kable(mutation.mapping.df) %>% 
   kable_styling(bootstrap_options = c("striped", "hover", "bordered", "condensed"), full_width = TRUE) %>%
@@ -151,7 +155,7 @@ kable(mutation.mapping.df) %>%
   pack_rows("Truncating", 6, 12)  %>%
   pack_rows("Other", 13, 28)
 
-## ---- include = TRUE-----------------------------------------------------
+## ---- include = TRUE----------------------------------------------------------
 # Example 1: TP53 has single UniProt entry
 hgnc2pfam("TP53", output.format = "list")
 
@@ -163,7 +167,7 @@ hgnc2pfam("GNAS", guess = TRUE)
 ## ---- chunk-label, out.width = "620px", fig.align='center', fig.cap='**Figure 1.** List of color schemes supported by `g3viz`', echo = FALSE----
 knitr::include_graphics("figures/color_scheme.png")
 
-## ---- include=TRUE, echo=FALSE-------------------------------------------
+## ---- include=TRUE, echo=FALSE------------------------------------------------
 chart.options.df = read.table("tables/chart_options.tsv", sep="\t", header=TRUE, quote="", comment.char="")
 kable(chart.options.df, caption = "Chart options of `g3viz`") %>% 
   kable_styling(bootstrap_options = c("striped", "hover", "bordered", "condensed"), full_width = TRUE) %>%
@@ -176,6 +180,6 @@ kable(chart.options.df, caption = "Chart options of `g3viz`") %>%
   pack_rows("Brush selection tool settings", 48, 53) %>%
   pack_rows("Tooltip and zoom tools", 54, 55)
 
-## ---- include=TRUE-------------------------------------------------------
+## ---- include=TRUE------------------------------------------------------------
 sessionInfo()
 

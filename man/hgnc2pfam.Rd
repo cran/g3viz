@@ -4,8 +4,7 @@
 \alias{hgnc2pfam}
 \title{Map from Hugo symbol to Pfam domains}
 \usage{
-hgnc2pfam(hgnc.symbol, guess = TRUE, uniprot.id = NA,
-  output.format = "json")
+hgnc2pfam(hgnc.symbol, guess = TRUE, uniprot.id = NA, output.format = "json")
 }
 \arguments{
 \item{hgnc.symbol}{primary Hugo symbol}

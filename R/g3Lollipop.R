@@ -96,23 +96,15 @@ g3Lollipop <- function(mutation.dat,
     stop("Some columns are missing in mutation data: ", paste(missing.columns, collapse = ", "))
   }
 
-  # get mutation data for the given gene
-  snv.data.df <- mutation.dat[mutation.dat[, gene.symbol.col] == gene.symbol
-                              & !is.na(mutation.dat[, aa.pos.col]), ]
-  snv.data.json <- toJSON(snv.data.df, pretty = FALSE, auto_unbox = TRUE)
-
+  # =======================================
+  # version 1.2.0
+  # (1) custom domain information
+  #     Require: domain
+  # (2) custom domain information format
+  #     Require
   # get protein domain information
   domain.data.json <- hgnc2pfam(hgnc.symbol = gene.symbol,
-																uniprot.id = uniprot.id)
-
-  # read in data
-  snv.data.format <- list(
-    x = aa.pos.col,
-    y = protein.change.col,
-    factor = factor.col
-  )
-
-  snv.data.format.json <- toJSON(snv.data.format, pretty = FALSE, auto_unbox = TRUE)
+                                uniprot.id = uniprot.id)
 
   # domain data format
   domain.data.format <- list(
@@ -125,6 +117,21 @@ g3Lollipop <- function(mutation.dat,
     )
   )
   domain.data.format.json <- toJSON(domain.data.format, pretty = FALSE, auto_unbox = TRUE)
+  # =======================================
+
+  # get mutation data for the given gene
+  snv.data.df <- mutation.dat[mutation.dat[, gene.symbol.col] == gene.symbol
+                              & !is.na(mutation.dat[, aa.pos.col]), ]
+  snv.data.json <- toJSON(snv.data.df, pretty = FALSE, auto_unbox = TRUE)
+
+  # read in data
+  snv.data.format <- list(
+    x = aa.pos.col,
+    y = protein.change.col,
+    factor = factor.col
+  )
+
+  snv.data.format.json <- toJSON(snv.data.format, pretty = FALSE, auto_unbox = TRUE)
 
   plot.options.json <- toJSON(plot.options, pretty = FALSE, auto_unbox = TRUE)
 

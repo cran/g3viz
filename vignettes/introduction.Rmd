@@ -79,6 +79,11 @@ devtools::install_github("g3viz/g3viz")
 
 # <a name="quickstart"></a>Quick Start
 
+```{r include = TRUE, message=FALSE, eval=FALSE}
+# load g3viz package
+library(g3viz)
+```
+
 ## <a name="ex1"></a>Example 1: Visualize genetic mutation data from `MAF` file
 
 Mutation Annotation Format ([MAF](https://docs.gdc.cancer.gov/Data/File_Formats/MAF_Format/)) is a commonly-used tab-delimited text file for storing aggregated mutation information.  It could be generated from [VCF](https://docs.gdc.cancer.gov/Data/File_Formats/VCF_Format/) file using tools like [vcf2maf](https://github.com/mskcc/vcf2maf).  Translational effect of variant alleles in `MAF` files are usually in the column named `Variant_Classification` or `Mutation_Type` (_i.e._, `Frame_Shift_Del`, `Split_Site`).  In this example, the somatic mutation data of the *TCGA-BRCA* study was originally downloaded from the [GDC Data Portal](https://portal.gdc.cancer.gov/projects/TCGA-BRCA).
@@ -227,7 +232,7 @@ g3Lollipop(mutation.dat,
 [cBioPortal](http://www.cbioportal.org/) provides download for many cancer genomics data sets.
 `g3viz` has a convenient way to retrieve data directly from this portal.
 
-In this example, we first retrieve genetic mutation data of `TP53` gene for the [msk\_impact\_2017](https://www.ncbi.nlm.nih.gov/pubmed/28481359) study,
+In this example, we first retrieve genetic mutation data of `TP53` gene for the [msk\_impact\_2017](https://pubmed.ncbi.nlm.nih.gov/28481359/) study,
 and then visualize the data using the built-in `cbioportal` theme, to miminc cBioPortal's [mutation_mapper](https://www.cbioportal.org/mutation_mapper).
 
 <a name="cbioportal_theme"></a>
