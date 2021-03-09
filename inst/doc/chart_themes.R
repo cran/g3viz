@@ -8,7 +8,8 @@ library(knitr)
 knitr::opts_chunk$set(
 	echo = TRUE,
 	collapse = TRUE,
-	comment = "#>"
+	comment = "#>",
+	eval = rmarkdown::pandoc_available('1.12.3')  # avoid test warning
 )
 
 ## ---- include = TRUE----------------------------------------------------------
