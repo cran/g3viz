@@ -8,8 +8,7 @@ library(kableExtra)
 knitr::opts_chunk$set(
 	echo = TRUE,
 	collapse = TRUE,
-	comment = "#>", 
-	eval = rmarkdown::pandoc_available('1.12.3')  # avoid test warning
+	comment = "#>"
 )
 
 ## ----include = TRUE, message=FALSE, eval=FALSE--------------------------------

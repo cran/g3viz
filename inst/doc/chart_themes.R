@@ -1,15 +1,14 @@
 ## ---- message=FALSE, include = FALSE------------------------------------------
 # install package
 library(g3viz)
-library(cgdsr)
+library(cBioPortalData)
 library(knitr)
 
 ## ----setup, include = FALSE---------------------------------------------------
 knitr::opts_chunk$set(
 	echo = TRUE,
 	collapse = TRUE,
-	comment = "#>",
-	eval = rmarkdown::pandoc_available('1.12.3')  # avoid test warning
+	comment = "#>"
 )
 
 ## ---- include = TRUE----------------------------------------------------------
